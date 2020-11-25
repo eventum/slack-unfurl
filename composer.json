@@ -26,6 +26,7 @@
         "monolog/monolog": "^1.23",
         "silex/silex": "^2.0",
         "symfony/dotenv": "^4.0|^5.0",
+        "symfony/flex": "^1.10",
         "wrapi/slack": "^0.1.6|^1.0"
     },
     "require-dev": {
@@ -50,5 +51,10 @@
     "scripts-descriptions": {
         "server": "Start http server at http://slack-unfurl.127.0.0.1.xip.io:4390",
         "ngrok": "Start ngrok, https://api.slack.com/tutorials/tunneling-with-ngrok"
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": "true"
+        }
     }
 }

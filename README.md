@@ -31,6 +31,14 @@ Obtain `OAuth Access Token` (`SLACK_API_TOKEN`) under `OAuth & Permissions`
 cp env.example .env
 ```
 
+The configuration can be managed by [symfony/flex]:
+
+```
+composer config extra.symfony.allow-contrib true
+```
+
+[symfony/flex]: https://flex.symfony.com/
+
 ## Adding providers
 
 The app itself handles no links, you need to add some providers:
