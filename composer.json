@@ -2,7 +2,7 @@
     "name": "glen/slack-unfurl",
     "description": "Extensible Slack App for link unfurling",
     "license": "MIT",
-    "type": "project",
+    "type": "composer-plugin",
     "config": {
         "platform": {
             "php": "7.1.3"
@@ -23,12 +23,15 @@
     "require": {
         "php": "^7.1.3",
         "ext-json": "*",
+        "composer-plugin-api": "^1.1.0 || ^2.0",
         "monolog/monolog": "^1.23",
         "silex/silex": "^2.0",
         "symfony/dotenv": "^4.0|^5.0",
         "wrapi/slack": "^0.1.6|^1.0"
     },
     "require-dev": {
+        "composer/composer": "^1.10",
+        "composer/package-versions-deprecated": "^1.8",
         "phpunit/phpunit": "^6.5",
         "symfony/var-dumper": "^4.0|^5.0"
     },
@@ -38,6 +41,9 @@
         "glen/slack-unfurl-jira": "Slack unfurl JIRA Provider",
         "rcknr/slack-unfurl-zendesk": "Slack unfurl Zendesk Provider"
     },
+    "extra": {
+        "class": "SlackUnfurl\\Composer\\RegisterPlugin"
+    },
     "scripts": {
         "ngrok": [
             "ngrok http 4390"
@@ -45,7 +51,9 @@
         "server": [
             "echo 'Started web server on http://slack-unfurl.127.0.0.1.xip.io:4390'",
             "php -S slack-unfurl.127.0.0.1.xip.io:4390 -t web"
-        ]
+        ],
+        "post-update-cmd":  "SlackUnfurl\\Composer\\RegisterPlugin::registerPlugins",
+        "post-install-cmd": "SlackUnfurl\\Composer\\RegisterPlugin::registerPlugins"
     },
     "scripts-descriptions": {
         "server": "Start http server at http://slack-unfurl.127.0.0.1.xip.io:4390",
